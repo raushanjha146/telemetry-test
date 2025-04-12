@@ -47,6 +47,7 @@ services:
 
 networks:
   monitoring:
+```
 
 ## 🚀 Features
 
@@ -62,7 +63,7 @@ networks:
 
 ## 📦 Dependencies
 
-Install Go dependencies:
+#### Install Go dependencies:
 
 ```bash
 go mod init telemetry-test
@@ -70,34 +71,39 @@ go get github.com/prometheus/client_golang/prometheus
 go get github.com/prometheus/client_golang/prometheus/promhttp
 go get github.com/shirou/gopsutil/v3/cpu
 go get github.com/shirou/gopsutil/v3/mem
+```
 
-📂 Project Structure
+## 📂 Project Structure
+```bash
 telemetry-test/
 ├── config.yaml     # Configuration file
 ├── main.go         # core logic 
+```
 
-🔧 How to Run
+## 🔧 How to Run
 ```bash
+cd <go_to_this_directory>
 go run main.go
 
 Once running, visit http://localhost:2112/metrics to see metrics in Prometheus format.
+```
 
-📊 Example Output
+## 📊 Example Output
 
-# HELP macbook_cpu_usage_percent CPU usage percentage on MacBook
-# TYPE macbook_cpu_usage_percent gauge
+#### HELP macbook_cpu_usage_percent CPU usage percentage on MacBook
+#### TYPE macbook_cpu_usage_percent gauge
 macbook_cpu_usage_percent 17.8
 
-# HELP macbook_memory_usage_percent Memory usage percentage on MacBook
-# TYPE macbook_memory_usage_percent gauge
+#### HELP macbook_memory_usage_percent Memory usage percentage on MacBook
+#### TYPE macbook_memory_usage_percent gauge
 macbook_memory_usage_percent 71.3
 
 macbook_memory_total_bytes 17179869184
 macbook_memory_used_bytes 12259811328
 
 
-⚙️ Prometheus Scrape Config
-
+## ⚙️ Prometheus Scrape Config
+```bash
 global:
   scrape_interval: 5s  # how often to scrape targets
 
@@ -105,8 +111,30 @@ scrape_configs:
   - job_name: "go_app_metrics"
     static_configs:
       - targets: ["host.docker.internal:2112"]
+```
 
-
+## URLs
+```bash
 Prometheus url : http://127.0.0.1:9090/
 Grafna url : http://localhost:3000/
 Node-exporter : http://localhost:2112/metrics
+```
+
+## Screenshots
+
+### ![Prometheus](images/Prometheus.png)
+
+### ![Node-exporter](images/Node-exporter.png)
+
+### ![Grafana_Dashboard](images/Grafana_Dashboard.png)
+
+### ![All_Connected_Devices_to_wifi_router](images/All_Connected_Devices_to_wifi_router.png)
+
+### ![cpu_usage_percent](images/cpu_usage_percent.png)
+
+### ![memory_total_bytes](images/memory_total_bytes.png)
+
+### ![memory_usage_percent](images/memory_usage_percent.png)
+
+### ![memory_used_bytes](images/memory_used_bytes.png)
+
